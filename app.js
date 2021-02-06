@@ -60,3 +60,29 @@ const getDinos = async () => {
 
     return []
 }
+
+/**
+ * End Dino Functions
+ * Begin Human Functions
+ *
+ */
+
+
+// Create Human Object
+function Human(diet, height, name, weight){
+    this.diet = diet;
+    this.height = height;
+    this.name = name;
+    this.weight = weight;
+}
+
+// Use IIFE to get human data from form
+const getHuman = () => {
+    const human = (function () {
+        const height = inputFeet.value * 12 + inputInches.value;
+
+        return new Human(inputDiet.value, height, inputName.value, inputWeight.value);
+    })();
+
+    return human;
+}
