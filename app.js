@@ -46,7 +46,7 @@ function Dino(diet, fact, height, species, weight, where, when){
     this.where = where;
     this.when = when;
     this.comparisonResults = [];
-}
+};
 
 // Create Dino Objects
 const getDinos = async () => {
@@ -59,7 +59,7 @@ const getDinos = async () => {
     }
 
     return []
-}
+};
 
 /**
  * End Dino Functions
@@ -74,7 +74,7 @@ function Human(diet, height, name, weight){
     this.height = height;
     this.name = name;
     this.weight = weight;
-}
+};
 
 // Use IIFE to get human data from form
 const getHuman = () => {
@@ -86,3 +86,44 @@ const getHuman = () => {
 
     return human;
 }
+
+
+/**
+ * End Human Functions
+ * Begin Dino Compare Functions
+ *
+ */
+
+
+// Compare Dino diet to Human
+Dino.prototype.compareDietToHuman = function(human) {
+    console.log('this.diet', this.diet);
+    if(this.diet === human.diet) {
+        this.comparisonResults.push(`${human.name} eats about the same as a ${this.species}.`);
+    }
+    else{
+        this.comparisonResults.push(`${human.name} does not eat the same food as a ${this.species}.`);
+    }
+};
+
+// Compare Dino height to Human
+Dino.prototype.compareHeightToHuman = function(human) {
+    if(this.height < human.height) {
+        this.comparisonResults.push(`${human.name} is shorter than an average ${this.species}.`);
+    } else if (this.height === human.height) {
+        this.comparisonResults.push(`${human.name} just at tall as an average ${this.species}.`);
+    } else {
+        this.comparisonResults.push(`${human.name} is taller than an average ${this.species}.`);
+    }
+};
+    
+// Compare Dino weight to Human
+Dino.prototype.compareWeightToHuman = function(human) {
+    if(this.weight < human.weight) {
+        this.comparisonResults.push(`${human.name} weighs more than an average ${this.species}.`);
+    } else if (this.weight === human.weight) {
+        this.comparisonResults.push(`${human.name} weighs about the same as an average ${this.species}.`);
+    } else {
+        this.comparisonResults.push(`${human.name} weighs less than an average ${this.species}.`);
+    }
+};
