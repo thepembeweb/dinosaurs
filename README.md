@@ -8,7 +8,7 @@
 
 ## Dinosaurs App
 
-![Dinosaurs app screenshot](app-screenshot.png)
+![Dinosaurs app screenshot](images/app-screenshot.png)
 
 Visit the website [here](https://thepembeweb.github.io/dinosaurs/index.html)
 
