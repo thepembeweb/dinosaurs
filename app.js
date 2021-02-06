@@ -220,3 +220,23 @@ const setDinoComparisonResults = (dinos, human) => {
 const removeForm = () => {
     document.getElementById('dino-compare').style.display = 'none';
 };
+
+
+/**
+ * End Helper Functions
+ * Begin Page Events
+ *
+ */
+
+
+// On button click, prepare and display infographic
+compareButton.addEventListener('click', () => {
+    generateTiles();
+    removeForm();
+});
+
+
+/**
+ * End Dino Page Events
+ *
+ */
