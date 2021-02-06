@@ -127,3 +127,96 @@ Dino.prototype.compareWeightToHuman = function(human) {
         this.comparisonResults.push(`${human.name} weighs less than an average ${this.species}.`);
     }
 };
+
+
+/**
+ * End Dino Compare Functions
+ * Begin Helper Functions
+ *
+ */
+
+
+// Generate Tiles for each Dino in Array
+const generateTiles = async() => {
+    try {
+        const human = getHuman();
+        const dinos = await getDinos();
+        setDinoComparisonResults(dinos, human);
+        formatTiles(dinos, human);
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+const generateTile = (item) => {
+    
+    const gridTile = document.createElement('div');
+    const tileTitle = document.createElement('h3');
+    const tileImage = document.createElement('img');
+    const tileFact = document.createElement('p');
+
+    comparisonGrid.appendChild(gridTile);
+    gridTile.appendChild(tileTitle);
+    gridTile.appendChild(tileImage);
+    gridTile.appendChild(tileFact);
+    gridTile.setAttribute('class', 'grid-item');
+    
+    if(item instanceof Dino) {
+        createDinoTile(item, tileTitle, tileImage, tileFact);
+    }
+    
+    if(item instanceof Human) {
+        createHumanTile(item, tileTitle, tileImage, tileFact);
+    }
+    
+};
+
+const createDinoTile = (item, title, image, fact) => {
+    title.innerHTML = `${item.species}`;
+    image.setAttribute('src', `./images/${item.species.toLowerCase()}.png`);
+    if(item.species === 'Pigeon') {
+        fact.innerHTML = 'All birds are living dinosaurs.';
+    }
+    else {
+        fact.innerHTML = `${getRandomFact(item)}`;
+    };
+};
+
+const createHumanTile = (item, title, image, fact) => {
+    title.innerHTML = `${item.name}`;
+    image.setAttribute('src', `./images/human.png`);
+    fact.innerHTML = `Hello, I'm representing the Humans!`;
+}
+
+const getRandomFact = (dino) => {
+    const randomfacts = [dino.fact, ...dino.comparisonResults];
+    randomfact = randomfacts[Math.floor(Math.random() * randomfacts.length)];
+
+    return randomfact;
+}
+
+const formatTiles = (dinos, human) => {
+    for(let i = 0; i < dinos.length; i++) {
+        if(i === 4){
+            generateTile(human);
+            generateTile(dinos[i]);
+        }
+        else{
+            generateTile(dinos[i]);
+        };
+    };
+};
+
+const setDinoComparisonResults = (dinos, human) => {
+    dinos.forEach(dino => {
+        dino.compareDietToHuman(human);
+        dino.compareHeightToHuman(human);
+        dino.compareWeightToHuman(human);
+    });
+};
+
+// Remove form from screen
+const removeForm = () => {
+    document.getElementById('dino-compare').style.display = 'none';
+};
