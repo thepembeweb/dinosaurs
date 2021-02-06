@@ -97,7 +97,6 @@ const getHuman = () => {
 
 // Compare Dino diet to Human
 Dino.prototype.compareDietToHuman = function(human) {
-    console.log('this.diet', this.diet);
     if(this.diet === human.diet) {
         this.comparisonResults.push(`${human.name} eats about the same as a ${this.species}.`);
     }
