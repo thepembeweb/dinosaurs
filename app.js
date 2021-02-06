@@ -185,7 +185,6 @@ const createDinoTile = (item, title, image, fact) => {
 const createHumanTile = (item, title, image, fact) => {
     title.innerHTML = `${item.name}`;
     image.setAttribute('src', `./images/human.png`);
-    fact.innerHTML = `Hello, I'm representing the Humans!`;
 }
 
 const getRandomFact = (dino) => {
