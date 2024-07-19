@@ -1,6 +1,6 @@
 ﻿# Dinosaurs
 
-> This project showcases object-oriented javascript and user interaction with the DOM by allowing users to compares dinosaur species to humans and displays random facts about the species1.
+> This project showcases object-oriented javascript and user interaction with the DOM by allowing users to compares dinosaur species to humans and displays random facts about the species.
 
 ![alt html, javascript and css logo](images/html-js-css-logo.png)
 
